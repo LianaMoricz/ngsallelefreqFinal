@@ -1,0 +1,2 @@
+# ngsallelefreqFinal
+Final Scripts NGSallelefreqFInal
