@@ -112,8 +112,8 @@ def classifyalleles(filename, refsequence):
 
 
     HTRpercentage = (crreads - (csreads + nhejreads)) / ( crreads + csreads + nhejreads) * 100
-    if HTRpercentage < 0:
-        HTRpercentage = 0
+    # if HTRpercentage < 0:
+    #     HTRpercentage = 0
     
     return {
         'filename': os.path.basename(filename),
