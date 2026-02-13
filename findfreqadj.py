@@ -95,7 +95,7 @@ def classifyalleles(filename, refsequence):
                 nhejreads += reads
 
             if topsequences[-1]['type'] == 'artifwt':
-                artifwtreadsreads += reads
+                artifwtreads += reads
         
             if topsequences[-1]['type'] == 'cr':
                 crreads += reads
