@@ -1,0 +1,647 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Allele Frequency Report from CRISPResso Individual </title>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <style>
+            body {
+                font-family: Lucida Console, monospace;
+                margin: 0.05;
+                padding: 16px;
+                background-color: #f5f5f5;
+            }
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                background-color: white;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+            h1, h2, h3 {
+                color: #333;
+            }
+            .chart-container {
+                margin: 30px 0;
+                position: relative;
+                height: 500px;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 20px 0;
+            }
+            th, td {
+                padding: 12px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }
+            th {
+                background-color: #f2f2f2;
+            }
+            tr:hover {
+                background-color: #f5f5f5;
+            }
+            .summary {
+                background-color: #d3d3d3;
+                padding: 15px;
+                border-radius: 5px;
+                margin: 20px 0;
+            }
+            .sequence-box {
+                font-family: monospace;
+                background-color: #f9f9f9;
+                padding: 10px;
+                border-radius: 5px;
+                margin: 10px 0;
+                overflow-x: auto;
+            }
+            .cs-seq {
+                color: #415b76;
+            }
+            .cr-seq {
+                color: #c0392b;
+            }
+            .nhej-seq {
+                color: #27ae60;
+            }
+            .htr-seq {
+                color: #f39c12;
+            }
+            .other-seq {
+                color: #7f8c8d;
+            }
+            .sample-section {
+                margin: 30px 0;
+                padding: 20px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+            }
+            .collapsible {
+                background-color: #eee;
+                color: #444;
+                cursor: pointer;
+                padding: 18px;
+                width: 100%;
+                border: none;
+                text-align: left;
+                outline: none;
+                font-size: 15px;
+                margin: 10px 0;
+            }
+            .active, .collapsible:hover {
+                background-color: #ccc;
+            }
+            .content {
+                padding: 0 18px;
+                display: none;
+                overflow: hidden;
+                background-color: #f9f9f9;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Allele Frequency Report from CRISPResso Individual</h1>
+            
+            <div class="Check:">
+                <h2></h2>
+                <p>1 files across 1 groups.</p>
+            </div>
+
+            <h2>Corrected Percentages by Genotype</h2>
+            <div class="chart-container">
+                <canvas id="barChart"></canvas>
+            </div>
+
+            <h2>Percentages</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Group</th>
+                        <th>Filename</th>
+                        <th>Total Reads</th>
+                        <th>Total Corrected Reads</th>
+                        <th>CS Reads</th>
+                        <th>CS %</th>
+                        <th>CS Corrected %</th>
+                        <th>NHEJ Reads</th>
+                        <th>NHEJ %</th>
+                        <th>NHEJ Corrected %</th>
+                        <th>CR Reads</th>
+                        <th>CR %</th>
+                        <th>CR Corrected %</th>
+                        <th>HTR %</th>
+                        <th>Other Reads</th>
+                        <th>Other %</th>
+                    </tr>
+                </thead>
+                <tbody>
+    
+                    <tr>
+                        <td>Test</td>
+                        <td>Alleles_frequency_table_around_sgRNA_CTTGCCTTTCGATCGCCGCA.txt</td>
+                        <td>752779</td>
+                        <td>491580</td>
+                        <td>188429</td>
+                        <td>25.03%</td>
+                        <td>38.33%</td>
+                        <td>46338</td>
+                        <td>6.16%</td>
+                        <td>9.43%</td>
+                        <td>256813</td>
+                        <td>34.12%</td>
+                        <td>52.24%</td>
+                        <td>4.48%</td>
+                        <td>261199</td>
+                        <td>34.70%</td>
+                    </tr>
+        
+                </tbody>
+            </table>
+            
+            <h2>Top 50 Sequences by Sample</h2>
+    
+            <button class="collapsible">Test - Alleles_frequency_table_around_sgRNA_CTTGCCTTTCGATCGCCGCA.txt - Top 50 Sequences</button>
+            <div class="content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Sequence</th>
+                            <th>Reads</th>
+                            <th>Percentage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        
+                        <tr>
+                            <td><span class="unknown-seq">UNKNOWN</span></td>
+                            <td class="sequence-box unknown-seq">TGCTGAATGCCCTTGCCTTTCGATCGCCGCAGTATCGGCGATCCAAGTATCGCCAT</td>
+                            <td>257222</td>
+                            <td>24.76%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="cr-seq">CR</span></td>
+                            <td class="sequence-box cr-seq">TGCTGAATGCCCTTGCCTTTCGATCGCCGCAG---ATCCAAGTATCGCCATCCGGG</td>
+                            <td>252198</td>
+                            <td>24.27%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="cs-seq">CS</span></td>
+                            <td class="sequence-box cs-seq">T------------TGCCTTTCGATCGCCGCAGGGCATCCAAGTATCGCCATCCGGG</td>
+                            <td>184938</td>
+                            <td>17.80%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="other-seq">OTHER</span></td>
+                            <td class="sequence-box other-seq">TGCTGAATGCCCTTGCCTTTCGATCGCCGCAGGGCATCCAAGTATCGCCATCCGGG</td>
+                            <td>99861</td>
+                            <td>9.61%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="other-seq">OTHER</span></td>
+                            <td class="sequence-box other-seq">TGCTGAATGCCCTTGCCTTTCGATCGC---AGGGCATCCAAGTATCGCCATCCGGG</td>
+                            <td>25328</td>
+                            <td>2.44%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="other-seq">OTHER</span></td>
+                            <td class="sequence-box other-seq">TGCTGAATGCCCTTGCCT---------CGCAGGGCATCCAAGTATCGCCATCCGGG</td>
+                            <td>9920</td>
+                            <td>0.95%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="other-seq">OTHER</span></td>
+                            <td class="sequence-box other-seq">T------TGCCC----------------GCAGGGCATCCAAGTATCGCCATCCGGG</td>
+                            <td>8787</td>
+                            <td>0.85%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="other-seq">OTHER</span></td>
+                            <td class="sequence-box other-seq">TGCTGAATGCCCTTGCCTTTCGATCGC--------ATCCAAGTATCGCCATCCGGG</td>
+                            <td>7568</td>
+                            <td>0.73%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="nhej-seq">NHEJ</span></td>
+                            <td class="sequence-box nhej-seq">T------------TGCCTTTCGATCGC---AGGGCATCCAAGTATCGCCATCCGGG</td>
+                            <td>7490</td>
+                            <td>0.72%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="other-seq">OTHER</span></td>
+                            <td class="sequence-box other-seq">TGCTGAATGCCCTTGCCTTTCG-------CAGGGCATCCAAGTATCGCCATCCGGG</td>
+                            <td>7039</td>
+                            <td>0.68%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="other-seq">OTHER</span></td>
+                            <td class="sequence-box other-seq">TGCTGAATGCCCTTGCC-----------GCAGGGCATCCAAGTATCGCCATCCGGG</td>
+                            <td>6620</td>
+                            <td>0.64%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="other-seq">OTHER</span></td>
+                            <td class="sequence-box other-seq">TGCTGAATGCCCTTGCC----------CGCAGGGCATCCAAGTATCGCCATCCGGG</td>
+                            <td>6337</td>
+                            <td>0.61%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="other-seq">OTHER</span></td>
+                            <td class="sequence-box other-seq">TT-----------------------GCCGCAGGGCATCCAAGTATCGCCATCCGGG</td>
+                            <td>5256</td>
+                            <td>0.51%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="other-seq">OTHER</span></td>
+                            <td class="sequence-box other-seq">TGCTGAATGCCCTTGC------------GCAGGGCATCCAAGTATCGCCATCCGGG</td>
+                            <td>5194</td>
+                            <td>0.50%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="nhej-seq">NHEJ</span></td>
+                            <td class="sequence-box nhej-seq">T------------TGCCT---------CGCAGGGCATCCAAGTATCGCCATCCGGG</td>
+                            <td>4745</td>
+                            <td>0.46%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="other-seq">OTHER</span></td>
+                            <td class="sequence-box other-seq">TGCTGAATGCCCTTG---------------------------TATCGCCATCCGGG</td>
+                            <td>4600</td>
+                            <td>0.44%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="other-seq">OTHER</span></td>
+                            <td class="sequence-box other-seq">TGCTGAATGCCCTTGCCTTTCGATCGATGCAGGGCATCCAAGTATCGCCATCCGGG</td>
+                            <td>3996</td>
+                            <td>0.38%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="nhej-seq">NHEJ</span></td>
+                            <td class="sequence-box nhej-seq">---------------------------CGCAGGGCATCCAAGTATCGCCATCCGGG</td>
+                            <td>3835</td>
+                            <td>0.37%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="other-seq">OTHER</span></td>
+                            <td class="sequence-box other-seq">T------------TGCCTTTCGATCGCCGCAG---ATCCAAGTATCGCCATCCGGG</td>
+                            <td>3762</td>
+                            <td>0.36%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="unknown-seq">UNKNOWN</span></td>
+                            <td class="sequence-box unknown-seq">TGCTGAATGCCCTTGCCTTTCGATCGCCCGCAGGGCATCCAAGTATCGCCATCCGG</td>
+                            <td>3530</td>
+                            <td>0.34%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="other-seq">OTHER</span></td>
+                            <td class="sequence-box other-seq">TGCTGAATGCCCTTGCCTTTCGATCGC-GCAGGGCATCCAAGTATCGCCATCCGGG</td>
+                            <td>3513</td>
+                            <td>0.34%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="other-seq">OTHER</span></td>
+                            <td class="sequence-box other-seq">T------TGC------------------GCAGGGCATCCAAGTATCGCCATCCGGG</td>
+                            <td>3435</td>
+                            <td>0.33%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="unknown-seq">UNKNOWN</span></td>
+                            <td class="sequence-box unknown-seq">T------------TGCCTTTCGATCGCCGCAGTATCGGCGATCCAAGTATCGCCAT</td>
+                            <td>3248</td>
+                            <td>0.31%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="nhej-seq">NHEJ</span></td>
+                            <td class="sequence-box nhej-seq">----------------------------GCAGGGCATCCAAGTATCGCCATCCGGG</td>
+                            <td>2859</td>
+                            <td>0.28%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="other-seq">OTHER</span></td>
+                            <td class="sequence-box other-seq">TGCTGAATGCCCTTGCCTTTCGATC--CGCAGGGCATCCAAGTATCGCCATCCGGG</td>
+                            <td>2738</td>
+                            <td>0.26%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="other-seq">OTHER</span></td>
+                            <td class="sequence-box other-seq">TGCTGAATGCCCTT-------------CGCAGGGCATCCAAGTATCGCCATCCGGG</td>
+                            <td>2604</td>
+                            <td>0.25%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="nhej-seq">NHEJ</span></td>
+                            <td class="sequence-box nhej-seq">T------------TGCCTTTCGATCGC--------ATCCAAGTATCGCCATCCGGG</td>
+                            <td>2496</td>
+                            <td>0.24%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="unknown-seq">UNKNOWN</span></td>
+                            <td class="sequence-box unknown-seq">T------------TGCCTTTCGATCGCCCGCAGGGCATCCAAGTATCGCCATCCGG</td>
+                            <td>2482</td>
+                            <td>0.24%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="other-seq">OTHER</span></td>
+                            <td class="sequence-box other-seq">TGCTGAATGCCCTTGCCTTTCGA-----GCAGGGCATCCAAGTATCGCCATCCGGG</td>
+                            <td>2481</td>
+                            <td>0.24%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="nhej-seq">NHEJ</span></td>
+                            <td class="sequence-box nhej-seq">T------------TGCCTTTCGATCGC-GCAGGGCATCCAAGTATCGCCATCCGGG</td>
+                            <td>2387</td>
+                            <td>0.23%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="other-seq">OTHER</span></td>
+                            <td class="sequence-box other-seq">TGCTGAATGCCC----------------GCAGGGCATCCAAGTATCGCCATCCGGG</td>
+                            <td>2304</td>
+                            <td>0.22%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="other-seq">OTHER</span></td>
+                            <td class="sequence-box other-seq">TGCTGAATGC------------------GCAGGGCATCCAAGTATCGCCATCCGGG</td>
+                            <td>2083</td>
+                            <td>0.20%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="other-seq">OTHER</span></td>
+                            <td class="sequence-box other-seq">TGCTGAATGCC-----------------GCAGGGCATCCAAGTATCGCCATCCGGG</td>
+                            <td>1946</td>
+                            <td>0.19%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="other-seq">OTHER</span></td>
+                            <td class="sequence-box other-seq">TGCTGAATGCCCTTGCCTTTCGATC-------------CAAGTATCGCCATCCGGG</td>
+                            <td>1706</td>
+                            <td>0.16%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="other-seq">OTHER</span></td>
+                            <td class="sequence-box other-seq">TGCTG----------------------CGCAGGGCATCCAAGTATCGCCATCCGGG</td>
+                            <td>1556</td>
+                            <td>0.15%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="unknown-seq">UNKNOWN</span></td>
+                            <td class="sequence-box unknown-seq">TGCTGAATGCCCTTGCCTTTCGATCGCATCCAAGGGCATCCAAGTATCGCCATCCG</td>
+                            <td>1504</td>
+                            <td>0.14%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="nhej-seq">NHEJ</span></td>
+                            <td class="sequence-box nhej-seq">----------------------------GCAGGGCATCCAAGTATCGCCATCCGGG</td>
+                            <td>1464</td>
+                            <td>0.14%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="other-seq">OTHER</span></td>
+                            <td class="sequence-box other-seq">TGCTGAATGCCCTTGCCTTTCGAT----GCAGGGCATCCAAGTATCGCCATCCGGG</td>
+                            <td>1463</td>
+                            <td>0.14%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="nhej-seq">NHEJ</span></td>
+                            <td class="sequence-box nhej-seq">T------------TGCCTTTCGA----CGCAGGGCATCCAAGTATCGCCATCCGGG</td>
+                            <td>1366</td>
+                            <td>0.13%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="other-seq">OTHER</span></td>
+                            <td class="sequence-box other-seq">TGCTGAATGC--------------------AGGGCATCCAAGTATCGCCATCCGGG</td>
+                            <td>1365</td>
+                            <td>0.13%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="nhej-seq">NHEJ</span></td>
+                            <td class="sequence-box nhej-seq">T------------TGCCTTTCGATCCA---AGGGCATCCAAGTATCGCCATCCGGG</td>
+                            <td>1361</td>
+                            <td>0.13%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="other-seq">OTHER</span></td>
+                            <td class="sequence-box other-seq">TGCTGAATGCCCTTGCCTTTCGATC-----AGGGCATCCAAGTATCGCCATCCGGG</td>
+                            <td>1351</td>
+                            <td>0.13%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="other-seq">OTHER</span></td>
+                            <td class="sequence-box other-seq">TT--------------------------GCAGGGCATCCAAGTATCGCCATCCGGG</td>
+                            <td>1300</td>
+                            <td>0.13%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="other-seq">OTHER</span></td>
+                            <td class="sequence-box other-seq">TGCTGAATGCCCTTGCCTTTCG-----CGCAGGGCATCCAAGTATCGCCATCCGGG</td>
+                            <td>1287</td>
+                            <td>0.12%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="other-seq">OTHER</span></td>
+                            <td class="sequence-box other-seq">TGCTGAATGCCCTTGCCTT--------CGCAGGGCATCCAAGTATCGCCATCCGGG</td>
+                            <td>1269</td>
+                            <td>0.12%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="other-seq">OTHER</span></td>
+                            <td class="sequence-box other-seq">TGCTGAATGCCC---------------CGCAGGGCATCCAAGTATCGCCATCCGGG</td>
+                            <td>1203</td>
+                            <td>0.12%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="other-seq">OTHER</span></td>
+                            <td class="sequence-box other-seq">TTC-------------------------GCAGGGCATCCAAGTATCGCCATCCGGG</td>
+                            <td>1145</td>
+                            <td>0.11%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="other-seq">OTHER</span></td>
+                            <td class="sequence-box other-seq">TGCTGAATGCCCTTGCCTTTCGA----CGCAGGGCATCCAAGTATCGCCATCCGGG</td>
+                            <td>1050</td>
+                            <td>0.10%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="nhej-seq">NHEJ</span></td>
+                            <td class="sequence-box nhej-seq">T------------TGCCTTTCGATC----CAAGGCATCCAAGTATCGCCATCCGGG</td>
+                            <td>1028</td>
+                            <td>0.10%</td>
+                        </tr>
+            
+                        <tr>
+                            <td><span class="other-seq">OTHER</span></td>
+                            <td class="sequence-box other-seq">TGCTGAATGCCCTTGCCTTTCGATCG------GGCATCCAAGTATCGCCATCCGGG</td>
+                            <td>1015</td>
+                            <td>0.10%</td>
+                        </tr>
+            
+                    </tbody>
+                </table>
+            </div>
+        
+            <script>
+                const barChartData = {"Test": {"cspercentagecorr": {"mean": 38.33129907644737, "stdev": 0}, "nhejpercentagecorr": {"mean": 9.426339558159405, "stdev": 0}, "crpercentagecorr": {"mean": 52.24236136539322, "stdev": 0}, "HTRpercentage": {"mean": 4.4847227307864435, "stdev": 0}}};
+                const groupNames = ["Test"];
+                const metrics = ["cspercentagecorr", "nhejpercentagecorr", "crpercentagecorr", "HTRpercentage"];
+                const metricLabels = ["CS Corrected %", "NHEJ Corrected %", "CR Corrected %", "HTR %"];
+                
+                // Define colors for each metric type
+                const metricColors = [
+                    'rgba(65, 91, 118, 0.7)',    // CS - blue
+                    'rgba(39, 174, 96, 0.7)',    // NHEJ - green
+                    'rgba(192, 57, 43, 0.7)',    // CR - red
+                    'rgba(243, 156, 18, 0.7)'    // HTR - orange
+                ];
+                
+                const borderColors = [
+                    'rgba(65, 91, 118, 1)',
+                    'rgba(39, 174, 96, 1)',
+                    'rgba(192, 57, 43, 1)',
+                    'rgba(243, 156, 18, 1)'
+                ];
+                
+                // Prepare datasets for bar chart
+                const datasets = [];
+                
+                metrics.forEach((metric, metricIndex) => {
+                    const data = [];
+                    const errorBars = [];
+                    
+                    groupNames.forEach(groupName => {
+                        if (barChartData[groupName] && barChartData[groupName][metric]) {
+                            data.push(barChartData[groupName][metric].mean);
+                            errorBars.push(barChartData[groupName][metric].stdev);
+                        } else {
+                            data.push(0);
+                            errorBars.push(0);
+                        }
+                    });
+                    
+                    datasets.push({
+                        label: metricLabels[metricIndex],
+                        data: data,
+                        backgroundColor: metricColors[metricIndex],
+                        borderColor: borderColors[metricIndex],
+                        borderWidth: 1,
+                        errorBars: errorBars
+                    });
+                });
+                
+                // Create bar chart
+                const barCtx = document.getElementById('barChart').getContext('2d');
+                new Chart(barCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: groupNames,
+                        datasets: datasets
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Genotype Groups'
+                                }
+                            },
+                            y: {
+                                beginAtZero: true,
+                                max: 100,
+                                title: {
+                                    display: true,
+                                    text: 'Percentage'
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                position: 'top'
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        const datasetIndex = context.datasetIndex;
+                                        const groupIndex = context.dataIndex;
+                                        const mean = context.parsed.y;
+                                        const stdev = datasets[datasetIndex].errorBars[groupIndex];
+                                        return metricLabels[datasetIndex] + ': ' + mean.toFixed(2) + '% ± ' + stdev.toFixed(2) + '%';
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+                
+                // Collapsible sections
+                var coll = document.getElementsByClassName("collapsible");
+                var i;
+                
+                for (i = 0; i < coll.length; i++) {
+                    coll[i].addEventListener("click", function() {
+                        this.classList.toggle("active");
+                        var content = this.nextElementSibling;
+                        if (content.style.display === "block") {
+                            content.style.display = "none";
+                        } else {
+                            content.style.display = "block";
+                        }
+                    });
+                }
+            </script>
+        </body>
+    </html>
+    
